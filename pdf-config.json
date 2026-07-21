@@ -1,0 +1,27 @@
+{
+  "stylesheet": [
+    "pdf-style.css"
+  ],
+  "body_class": "awaazlabs-pdf",
+  "highlight_style": "github",
+  "marked_options": {
+    "headerIds": true,
+    "mangle": false,
+    "gfm": true,
+    "breaks": false
+  },
+  "pdf_options": {
+    "format": "A4",
+    "printBackground": true,
+    "displayHeaderFooter": true,
+    "preferCSSPageSize": true,
+    "margin": {
+      "top": "20mm",
+      "right": "14mm",
+      "bottom": "18mm",
+      "left": "14mm"
+    },
+    "headerTemplate": "<div style=\"width:100%; font-family:Segoe UI, Arial, sans-serif; font-size:8px; color:#5b6472; padding:0 14mm; box-sizing:border-box;\"><div style=\"width:100%; border-bottom:1px solid #d9e0e7; padding:0 0 4px;\">Markdown to PDF</div></div>",
+    "footerTemplate": "<div style=\"width:100%; font-family:Segoe UI, Arial, sans-serif; font-size:8px; color:#5b6472; padding:0 14mm; box-sizing:border-box;\"><div style=\"width:100%; border-top:1px solid #d9e0e7; padding:4px 0 0; text-align:right;\"><span class=\"pageNumber\"></span> / <span class=\"totalPages\"></span></div></div>"
+  }
+}

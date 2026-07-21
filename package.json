@@ -1,0 +1,10 @@
+{
+  "name": "markdown-to-pdf",
+  "private": true,
+  "scripts": {
+    "convert": "powershell -ExecutionPolicy Bypass -File .\\generate-pdf.ps1"
+  },
+  "dependencies": {
+    "md-to-pdf": "^5.2.5"
+  }
+}

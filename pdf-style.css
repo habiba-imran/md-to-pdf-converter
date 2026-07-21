@@ -1,0 +1,327 @@
+/* =========================================================
+   PRETTY PDF STYLESHEET
+   Professional styling with compact layout
+   ========================================================= */
+
+/* ── Google Fonts ──────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ── Page ──────────────────────────────────────────────── */
+
+@page {
+  size: A4;
+  margin: 18mm 18mm 20mm 18mm;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+
+html {
+  font-size: 9.5pt;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #1e2d3d;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Headings ──────────────────────────────────────────── */
+
+h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  color: #0f1b2d;
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 6pt;
+  padding-bottom: 9pt;
+  border-bottom: 3px solid #00c2b2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 13pt;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-top: 20pt;
+  margin-bottom: 7pt;
+  padding: 6pt 12pt 6pt 14pt;
+  background: #0f1b2d;
+  border-left: 4px solid #00c2b2;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #0f1b2d;
+  line-height: 1.25;
+  margin-top: 14pt;
+  margin-bottom: 4pt;
+  padding-left: 9pt;
+  border-left: 3px solid #00c2b2;
+}
+
+h4 {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #1a4a7a;
+  margin-top: 10pt;
+  margin-bottom: 3pt;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+h5, h6 {
+  font-size: 9pt;
+  font-weight: 600;
+  color: #3a4a5c;
+  margin-top: 8pt;
+  margin-bottom: 3pt;
+}
+
+/* ── Paragraph & inline ────────────────────────────────── */
+
+p {
+  margin-bottom: 6pt;
+  color: #2a3a4c;
+  line-height: 1.55;
+}
+
+strong {
+  font-weight: 600;
+  color: #0f1b2d;
+}
+
+em {
+  font-style: italic;
+  color: #3a4a5c;
+}
+
+a {
+  color: #009e90;
+  text-decoration: none;
+}
+
+/* ── Horizontal rule ───────────────────────────────────── */
+
+hr {
+  border: none;
+  border-top: 1px solid #d0dae8;
+  margin: 12pt 0;
+}
+
+/* ── Lists ─────────────────────────────────────────────── */
+
+ul, ol {
+  padding-left: 16pt;
+  margin-bottom: 6.5pt;
+}
+
+li {
+  line-height: 1.45;
+  color: #2a3a4c;
+  margin-bottom: 1.5pt;
+}
+
+li + li {
+  margin-top: 1.5pt;
+}
+
+li > ul,
+li > ol {
+  margin-top: 2pt;
+  margin-bottom: 3pt;
+}
+
+ul li::marker {
+  color: #00c2b2;
+  font-size: 1.1em;
+}
+
+ol li::marker {
+  color: #0f1b2d;
+  font-weight: 600;
+}
+
+/* ── Tables ────────────────────────────────────────────── */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  line-height: 1.3;
+  margin-bottom: 8pt;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+thead tr {
+  background: #0f1b2d;
+}
+
+thead th {
+  padding: 6pt 9pt;
+  text-align: left;
+  font-weight: 600;
+  font-size: 8pt;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f4f9;
+}
+
+tbody td {
+  padding: 5pt 9pt;
+  border-bottom: 1px solid #d8e3ee;
+  vertical-align: top;
+  color: #2a3a4c;
+}
+
+tbody td:first-child {
+  font-weight: 500;
+  color: #0f1b2d;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tr {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+thead tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* ── Code ──────────────────────────────────────────────── */
+
+code, tt {
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
+  font-size: 8.3pt;
+  background: #e8eff7;
+  color: #0f1b2d;
+  padding: 1pt 3.5pt;
+  border-radius: 3px;
+}
+
+pre {
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
+  font-size: 8pt;
+  line-height: 1.45;
+  background: #f0f4f9;
+  border: 1px solid #d0dae8;
+  border-left: 4px solid #00c2b2;
+  border-radius: 4px;
+  padding: 8pt 10pt;
+  margin-bottom: 7pt;
+  color: #1e2d3d;
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+pre code, pre tt {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* ── Blockquotes ───────────────────────────────────────── */
+
+blockquote {
+  border-left: 4px solid #00c2b2;
+  background: #e6faf8;
+  margin: 6pt 0 7pt 0;
+  padding: 6pt 10pt;
+  border-radius: 0 4px 4px 0;
+  color: #1a3a4a;
+}
+
+blockquote p {
+  margin: 0;
+  color: #1a3a4a;
+  line-height: 1.45;
+}
+
+blockquote strong {
+  color: #007a6e;
+}
+
+/* ── Images ────────────────────────────────────────────── */
+
+img, svg {
+  max-width: 100%;
+  max-height: 200mm;
+  object-fit: contain;
+  display: block;
+  margin: 6pt 0;
+}
+
+/* ── Spacing: compact title metadata block ─────────────── */
+
+h1 + p,
+h1 + p + p,
+h1 + p + p + p,
+h1 + p + p + p + p,
+h1 + p + p + p + p + p,
+h1 + p + p + p + p + p + p {
+  margin-bottom: 2.5pt;
+  font-size: 9pt;
+  color: #5a6a7a;
+}
+
+h1 + p + p + p + p + p + p {
+  margin-bottom: 10pt;
+}
+
+/* ── Spacing: consecutive headings ────────────────────── */
+
+h2 + h3,
+h3 + h4 {
+  margin-top: 5pt;
+}
+
+p + ul,
+p + ol,
+p + table {
+  margin-top: -1pt;
+}
+
+/* ── Page break control ────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h2 + table,
+h3 + table,
+h4 + table {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
+h2 + p,
+h3 + p {
+  break-before: avoid;
+  page-break-before: avoid;
+}
