@@ -1,6 +1,6 @@
 {
   "stylesheet": [
-    "pdf-style.css"
+    "styles/professional.css"
   ],
   "body_class": "awaazlabs-pdf",
   "highlight_style": "github",

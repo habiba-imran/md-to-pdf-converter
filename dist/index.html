@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown to PDF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <p class="eyebrow">Markdown to PDF</p>
+        <h1>Upload Markdown, choose a style, and download polished PDFs.</h1>
+        <p class="hero-copy">
+          This local app converts one or many `.md` files into styled PDFs using a minimal frontend and a lightweight Node server.
+        </p>
+      </section>
+
+      <section class="app-card">
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept=".md,text/markdown" multiple hidden />
+          <p class="dropzone-title">Drop your Markdown files here</p>
+          <p class="dropzone-subtitle">or click to browse for one or more `.md` files</p>
+          <button type="button" class="secondary-button" id="browseButton">Choose files</button>
+          <p class="file-pill" id="selectedFile">No files selected</p>
+          <div class="file-list" id="fileList" aria-live="polite"></div>
+        </div>
+
+        <div class="styles-panel">
+          <div class="panel-heading">
+            <h2>Choose a PDF style</h2>
+            <p>Each card includes a sample preview so users can quickly understand the PDF look.</p>
+          </div>
+
+          <div class="style-grid" id="styleGrid">
+            <label class="style-card">
+              <input type="radio" name="style" value="professional" checked />
+              <span class="style-preview style-preview-professional" aria-hidden="true">
+                <span class="preview-page">
+                  <span class="preview-topbar"></span>
+                  <span class="preview-title"></span>
+                  <span class="preview-block preview-block-wide"></span>
+                  <span class="preview-heading dark"></span>
+                  <span class="preview-row">
+                    <span class="preview-line"></span>
+                    <span class="preview-line short"></span>
+                  </span>
+                  <span class="preview-table">
+                    <span></span><span></span><span></span>
+                  </span>
+                </span>
+              </span>
+              <span class="style-name">Professional</span>
+              <span class="style-description">Best for reports, proposals, and client-ready documents.</span>
+            </label>
+
+            <label class="style-card">
+              <input type="radio" name="style" value="clean" />
+              <span class="style-preview style-preview-clean" aria-hidden="true">
+                <span class="preview-page">
+                  <span class="preview-title serif"></span>
+                  <span class="preview-line soft"></span>
+                  <span class="preview-line"></span>
+                  <span class="preview-line short"></span>
+                  <span class="preview-heading"></span>
+                  <span class="preview-block pale"></span>
+                  <span class="preview-line"></span>
+                </span>
+              </span>
+              <span class="style-name">Clean</span>
+              <span class="style-description">Simple and airy for readable notes and documentation.</span>
+            </label>
+
+            <label class="style-card">
+              <input type="radio" name="style" value="compact" />
+              <span class="style-preview style-preview-compact" aria-hidden="true">
+                <span class="preview-page">
+                  <span class="preview-title compact"></span>
+                  <span class="preview-line dense"></span>
+                  <span class="preview-line dense"></span>
+                  <span class="preview-heading small"></span>
+                  <span class="preview-grid">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                  <span class="preview-line dense"></span>
+                </span>
+              </span>
+              <span class="style-name">Compact</span>
+              <span class="style-description">Dense layout for longer technical content and specs.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="customize-panel">
+          <div class="panel-heading">
+            <h2>Customize without code</h2>
+            <p>These options adjust the PDF styling behind the scenes, so non-technical users can fine-tune the output safely.</p>
+          </div>
+
+          <div class="control-grid">
+            <label class="control">
+              <span class="control-label">Font style</span>
+              <select id="fontFamily">
+                <option value="default">Match selected theme</option>
+                <option value="modern">Modern sans</option>
+                <option value="editorial">Editorial serif</option>
+                <option value="technical">Technical mono mix</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span class="control-label">Page margins</span>
+              <select id="marginPreset">
+                <option value="compact">Compact</option>
+                <option value="normal" selected>Normal</option>
+                <option value="wide">Wide</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span class="control-label">Text tone</span>
+              <select id="textTone">
+                <option value="dark" selected>Dark</option>
+                <option value="soft">Soft</option>
+                <option value="contrast">High contrast</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span class="control-label">Table style</span>
+              <select id="tableStyle">
+                <option value="minimal">Minimal</option>
+                <option value="bordered" selected>Bordered</option>
+                <option value="shaded">Shaded</option>
+              </select>
+            </label>
+
+            <label class="control control-range">
+              <span class="control-label">Title size</span>
+              <div class="range-row">
+                <input type="range" id="titleSize" min="20" max="34" value="26" />
+                <span class="range-value" id="titleSizeValue">26 px</span>
+              </div>
+            </label>
+
+            <label class="control control-range">
+              <span class="control-label">Body size</span>
+              <div class="range-row">
+                <input type="range" id="bodySize" min="9" max="13" step="0.5" value="10.5" />
+                <span class="range-value" id="bodySizeValue">10.5 pt</span>
+              </div>
+            </label>
+
+            <label class="control control-range">
+              <span class="control-label">Line spacing</span>
+              <div class="range-row">
+                <input type="range" id="lineHeight" min="1.35" max="1.9" step="0.05" value="1.6" />
+                <span class="range-value" id="lineHeightValue">1.60</span>
+              </div>
+            </label>
+
+            <label class="control">
+              <span class="control-label">Accent color</span>
+              <div class="color-row">
+                <input type="color" id="accentColor" value="#b8502d" />
+                <span class="color-value" id="accentColorValue">#b8502d</span>
+              </div>
+            </label>
+
+            <label class="control control-toggle">
+              <span class="control-label">Header and footer</span>
+              <span class="toggle-row">
+                <input type="checkbox" id="showHeaderFooter" checked />
+                <span>Include page header and footer</span>
+              </span>
+            </label>
+
+            <div class="control control-actions">
+              <span class="control-label">Quick actions</span>
+              <button type="button" class="secondary-button subtle-button" id="resetCustomizations">Reset custom options</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="primary-button" id="convertButton">Convert to PDF</button>
+          <p class="status-text" id="statusText">Ready when you are.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/config.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

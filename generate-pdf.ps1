@@ -74,29 +74,28 @@ try {
     Fail-Step "Chrome or Edge was not found in a standard install location. Install one of them and rerun the script."
   }
 
-  $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
-  $config.launch_options = [pscustomobject]@{
-    executablePath = $chromePath
-  }
+  foreach ($markdownFile in $markdownFiles) {
+    $outputPath = Join-Path $outputDir ($markdownFile.BaseName + ".pdf")
 
-  $tempConfigPath = Join-Path $env:TEMP ("md-to-pdf-config-" + [guid]::NewGuid().ToString() + ".json")
-  try {
-    $config | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $tempConfigPath -Encoding UTF8
+    if (Test-Path -LiteralPath $outputPath) {
+      Remove-Item -LiteralPath $outputPath -Force
+    }
 
-    foreach ($markdownFile in $markdownFiles) {
-      $outputPath = Join-Path $outputDir ($markdownFile.BaseName + ".pdf")
+    $fileConfig = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
+    $fileConfig | Add-Member -MemberType NoteProperty -Name launch_options -Value ([pscustomobject]@{
+      executablePath = $chromePath
+    }) -Force
+    $fileConfig | Add-Member -MemberType NoteProperty -Name dest -Value $outputPath -Force
 
-      if (Test-Path -LiteralPath $outputPath) {
-        Remove-Item -LiteralPath $outputPath -Force
-      }
+    $tempConfigPath = Join-Path $env:TEMP ("md-to-pdf-config-" + [guid]::NewGuid().ToString() + ".json")
+    try {
+      $fileConfig | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath $tempConfigPath -Encoding UTF8
 
       Write-Host "Generating PDF for $($markdownFile.Name)..."
       $convertArgs = @(
         $markdownFile.FullName,
         "--config-file",
-        $tempConfigPath,
-        "--dest",
-        $outputPath
+        $tempConfigPath
       )
       $convertProcess = Start-Process -FilePath $localCli -ArgumentList $convertArgs -WorkingDirectory $projectRoot -NoNewWindow -Wait -PassThru
       if ($convertProcess.ExitCode -ne 0) {
@@ -109,10 +108,10 @@ try {
 
       Write-Host "Created $outputPath"
     }
-  }
-  finally {
-    if (Test-Path -LiteralPath $tempConfigPath) {
-      Remove-Item -LiteralPath $tempConfigPath -Force
+    finally {
+      if (Test-Path -LiteralPath $tempConfigPath) {
+        Remove-Item -LiteralPath $tempConfigPath -Force
+      }
     }
   }
 

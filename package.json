@@ -1,8 +1,14 @@
 {
   "name": "markdown-to-pdf",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0 <22.0.0"
+  },
   "scripts": {
-    "convert": "powershell -ExecutionPolicy Bypass -File .\\generate-pdf.ps1"
+    "convert": "powershell -ExecutionPolicy Bypass -File .\\generate-pdf.ps1",
+    "start": "node server.js",
+    "start:api": "node server.js",
+    "build:frontend": "node scripts/build-frontend.js"
   },
   "dependencies": {
     "md-to-pdf": "^5.2.5"

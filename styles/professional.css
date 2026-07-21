@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@page {
+  size: A4;
+  margin: 18mm 18mm 20mm 18mm;
+}
+
+html {
+  font-size: 9.5pt;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  line-height: 1.55;
+  color: #1e2d3d;
+  background: #ffffff;
+}
+
+h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  color: #0f1b2d;
+  margin: 0 0 8pt;
+  padding-bottom: 9pt;
+  border-bottom: 3px solid #00c2b2;
+}
+
+h2 {
+  font-size: 13pt;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 20pt 0 7pt;
+  padding: 6pt 12pt 6pt 14pt;
+  background: #0f1b2d;
+  border-left: 4px solid #00c2b2;
+  border-radius: 4px;
+}
+
+h3 {
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #0f1b2d;
+  margin: 14pt 0 4pt;
+  padding-left: 9pt;
+  border-left: 3px solid #00c2b2;
+}
+
+h4,
+h5,
+h6 {
+  color: #20486f;
+}
+
+p,
+li {
+  color: #2a3a4c;
+}
+
+a {
+  color: #009e90;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin-bottom: 8pt;
+}
+
+thead tr {
+  background: #0f1b2d;
+}
+
+thead th {
+  padding: 6pt 9pt;
+  text-align: left;
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f4f9;
+}
+
+tbody td {
+  padding: 5pt 9pt;
+  border-bottom: 1px solid #d8e3ee;
+  vertical-align: top;
+}
+
+code,
+pre {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+code {
+  background: #e8eff7;
+  padding: 1pt 3.5pt;
+  border-radius: 3px;
+}
+
+pre {
+  background: #f0f4f9;
+  border: 1px solid #d0dae8;
+  border-left: 4px solid #00c2b2;
+  border-radius: 4px;
+  padding: 8pt 10pt;
+}
+
+blockquote {
+  border-left: 4px solid #00c2b2;
+  background: #e6faf8;
+  margin: 6pt 0 7pt;
+  padding: 6pt 10pt;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
