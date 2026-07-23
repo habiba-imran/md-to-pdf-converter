@@ -8,7 +8,8 @@
     "convert": "powershell -ExecutionPolicy Bypass -File .\\generate-pdf.ps1",
     "start": "node server.js",
     "start:api": "node server.js",
-    "build:frontend": "node scripts/build-frontend.js"
+    "build:frontend": "node scripts/build-frontend.js",
+    "build": "node scripts/build-frontend.js"
   },
   "dependencies": {
     "md-to-pdf": "^5.2.5"
