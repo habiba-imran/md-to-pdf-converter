@@ -10,7 +10,7 @@ const stylesDir = path.join(projectRoot, 'styles');
 const port = Number(process.env.PORT || 3000);
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .split(',')
-  .map((origin) => origin.trim())
+  .map((origin) => origin.trim().replace(/\/+$/, ''))
   .filter(Boolean);
 
 const styleOptions = {
@@ -73,10 +73,12 @@ function loadPdfConfig(selectedStylePath, browserPath) {
 function applyCorsHeaders(request, response) {
   const requestOrigin = request.headers.origin;
 
-  if (allowedOrigins.length === 0 && requestOrigin) {
-    response.setHeader('Access-Control-Allow-Origin', requestOrigin);
-  } else if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
-    response.setHeader('Access-Control-Allow-Origin', requestOrigin);
+  if (requestOrigin) {
+    if (allowedOrigins.length === 0 || allowedOrigins.includes('*')) {
+      response.setHeader('Access-Control-Allow-Origin', requestOrigin);
+    } else if (allowedOrigins.includes(requestOrigin)) {
+      response.setHeader('Access-Control-Allow-Origin', requestOrigin);
+    }
   }
 
   response.setHeader('Vary', 'Origin');
