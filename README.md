@@ -1,4 +1,4 @@
-# Markdown to PDF
+# MARKDOWN TO PDF
 
 This project now supports two ways to convert Markdown into PDF:
 
