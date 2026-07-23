@@ -7,7 +7,7 @@ services:
     startCommand: npm run start:api
     envVars:
       - key: NODE_VERSION
-        value: 20.20.2
+        value: 22.0.0
       - key: NODE_ENV
         value: production
       - key: ALLOWED_ORIGINS
